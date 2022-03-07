@@ -5,6 +5,7 @@ import { env } from "process";
 import express, { Request, Response } from "express";
 import { sequelize } from "./sequelize";
 import inboundRouter from "./routes/inbound";
+import outboundRouter from "./routes/outbound"
 import { limiter } from "./routes/middlewares/rate";
 
 
@@ -21,7 +22,7 @@ app.use(cors({
 
 app.use(inboundRouter);
 app.use(limiter);
-app.use()
+app.use(outboundRouter);
 
 app.use(async (req: Request, res: Response) => {
     res.status(405).send({})
