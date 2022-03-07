@@ -3,7 +3,10 @@ import { Table, Column, Model, ForeignKey, BelongsTo } from "sequelize-typescrip
 import Account from "./Account";
 
 
-@Table
+@Table({
+    tableName: "phone_number",
+    timestamps: false,
+})
 export default class PhoneNumber extends Model<PhoneNumber> {
     @Column
     public number!: string;
