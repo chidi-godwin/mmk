@@ -5,6 +5,7 @@ import { env } from "process";
 import express, { Request, Response } from "express";
 import { sequelize } from "./sequelize";
 import inboundRouter from "./routes/inbound";
+import { limiter } from "./routes/middlewares/rate";
 
 
 const app = express();
@@ -19,6 +20,8 @@ app.use(cors({
 }));
 
 app.use(inboundRouter);
+app.use(limiter);
+app.use()
 
 app.use(async (req: Request, res: Response) => {
     res.status(405).send({})

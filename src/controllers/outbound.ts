@@ -1,13 +1,13 @@
 import { smsValidator } from "../schema/sms";
 import { Request, Response } from "express";
-import { inboundService } from "../services/inbound";
+import { outboundService } from "../services/outbound";
 
 import { Sms, ServiceResponse } from "../types/inbound";
 
 export default async function (req: Request, res: Response): Promise<Response<ServiceResponse>> {
     try {
         const data: Sms = await smsValidator.validateAsync(req.body);
-        const response = await inboundService(data, req.user);
+        const response = await outboundService(data, req.user);
 
         return res.status(200).send(response)
     } catch (err: any) {
