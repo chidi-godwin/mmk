@@ -1,11 +1,15 @@
-import { Table, Column, Model, CreatedAt, UpdatedAt } from "sequelize-typescript";
+import { Table, Column, Model, HasMany } from "sequelize-typescript";
+import PhoneNumber from "./PhoneNumber";
 
 
 @Table
-export class Account extends Model<Account> {
+export default class Account extends Model<Account> {
     @Column
     public auth_id!: string;
 
     @Column
     public username!: string;
+
+    @HasMany(() => PhoneNumber)
+    numbers: PhoneNumber[]
 }
