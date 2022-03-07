@@ -1,10 +1,10 @@
 import Account from "../models/Account";
 import PhoneNumber from "../models/PhoneNumber";
-import { InboundResponse, InboundSms } from "../types/inbound";
+import { ServiceResponse, Sms } from "../types/inbound";
 import { createClient } from "redis";
 
 
-export async function inboundService(data: InboundSms, user: Account): Promise<InboundResponse> {
+export async function inboundService(data: Sms, user: Account): Promise<ServiceResponse> {
     const client = createClient({
         url: "redis://localhost:6379"
     });

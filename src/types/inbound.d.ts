@@ -1,10 +1,10 @@
-export interface InboundSms {
+export interface Sms {
     from: string;
     to: string;
     text: string;
 }
 
-export interface InboundResponse {
+export interface ServiceResponse {
     message: string; 
     error: string;
 }
