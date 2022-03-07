@@ -4,6 +4,7 @@ dotenv.config({path: "./.env"});
 import { env } from "process";
 import express, { Request, Response } from "express";
 import { sequelize } from "./sequelize";
+import inboundRouter from "./routes/inbound";
 
 
 const app = express();
@@ -16,6 +17,8 @@ app.use(cors({
     preflightContinue: true,
     origin: '*',
 }));
+
+app.use(inboundRouter);
 
 app.use(async (req: Request, res: Response) => {
     res.status(405).send({})
