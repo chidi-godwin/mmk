@@ -1,5 +1,6 @@
 import dotenv from "dotenv"
 dotenv.config();
+import { Dialect } from "sequelize/types";
 
 
 const {
@@ -8,14 +9,15 @@ const {
     DB_DATABASE,
     DB_HOST,
     DB_PORT,
-    DB_DIALECT,
 } = process.env;
+
+const dialect: Dialect = 'postgres';
 
 export const config = {
     username: DB_USERNAME,
     password: DB_PASSWORD,
     database: DB_DATABASE,
     host: DB_HOST,
-    port: DB_PORT,
-    dialect: DB_DIALECT,
+    port: parseInt(DB_PORT),
+    dialect
 };
