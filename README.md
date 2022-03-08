@@ -23,3 +23,6 @@ Once your database is set up, create your DATABASE_URL using this URI format `po
     npm run dev
     ```
 * You can visit `http://localhost:3000/` in your web browser to verify that the application is running. You should see an empty JSON payload. Feel free to play around with Postman to test the API's `https://documenter.getpostman.com/view/12384721/UVsEVUZx`.
+
+### 3. Heroku
+A live version of the application hosted on Heroku is available at [https://mmk-assesment.herokuapp.com](https://mmk-assesment.herokuapp.com)
