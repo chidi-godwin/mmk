@@ -1,6 +1,6 @@
 import cors from "cors";
 import dotenv from "dotenv"
-dotenv.config({path: "./.env"});
+dotenv.config({path: "../.env"});
 import { env } from "process";
 import express, { Request, Response } from "express";
 import { sequelize } from "./sequelize";

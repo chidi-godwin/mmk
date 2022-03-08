@@ -1,5 +1,5 @@
 import dotenv from "dotenv"
-dotenv.config({path: "./.env"});
+dotenv.config({path: "../../.env"});
 import Account from "../models/Account";
 import PhoneNumber from "../models/PhoneNumber";
 import { ServiceResponse, Sms } from "../types/inbound";
