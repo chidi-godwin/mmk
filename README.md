@@ -10,7 +10,7 @@ Create a PostgreSQL database locally. The database is used to store the applicat
 * We will need to use password authentication for this project. This means that a username and password is needed to authenticate and access the database.
 * The port number will need to be set as `5432`. This is the typical port that is used by PostgreSQL so it is usually set to this port by default.
 
-Once your database is set up, create your DATABASE_URL using this URI format "postgres://user:password@localhost:5432/databaseName"
+Once your database is set up, create your DATABASE_URL using this URI format `postgres://user:password@localhost:5432/databaseName`
 
 ### 2. Install
 
