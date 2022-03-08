@@ -4,6 +4,6 @@ import { Dialect } from "sequelize/types";
 import { env } from "process";
 
 
-const { DB_URI } = env;
+const { DATABASE_URL } = env;
 
-export const config = { DB_URI }
+export const config = { DATABASE_URL }
