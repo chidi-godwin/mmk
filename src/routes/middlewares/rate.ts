@@ -1,10 +1,14 @@
+import dotenv from "dotenv"
+dotenv.config({path: "./.env"});
 import rateLimit from "express-rate-limit";
 import RedisStore from "rate-limit-redis";
 import { createClient } from "redis";
-import { Request, Response, NextFunction } from "express";
+import { env } from "process";
 
 
-const client = createClient({});
+const client = createClient({
+  url: env.REDIS_URL
+});
 client.connect().then(() => console.log('Redis client connected'));
 
 

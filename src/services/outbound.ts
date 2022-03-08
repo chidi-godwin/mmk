@@ -1,12 +1,15 @@
+import dotenv from "dotenv"
+dotenv.config({path: "./.env"});
 import Account from "../models/Account";
 import PhoneNumber from "../models/PhoneNumber";
 import { ServiceResponse, Sms } from "../types/inbound";
 import { createClient } from "redis";
+import { env } from "process";
 
 
 export async function outboundService(data: Sms, user: Account): Promise<ServiceResponse> {
     const client = createClient({
-        url: "redis://localhost:6379"
+        url: env.REDIS_URL
     });
 
     client.on('error', (err) => console.log('Redis Client Error', err));
