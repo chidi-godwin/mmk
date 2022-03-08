@@ -3,19 +3,13 @@ dotenv.config();
 import Account from "../models/Account";
 import PhoneNumber from "../models/PhoneNumber";
 import { ServiceResponse, Sms } from "../types/inbound";
-import { createClient } from "redis";
+import Redis from "ioredis";
 import { env } from "process";
 
 
 export async function outboundService(data: Sms, user: Account): Promise<ServiceResponse> {
-    console.log(env.REDIS_URL);
-    const client = createClient({
-        url: env.REDIS_URL
-    });
-
-    client.on('error', (err) => console.log('Redis Client Error', err));
-    await client.connect();
-
+    const client = new Redis(env.REDIS_URL);
+    
     const number = await PhoneNumber.findOne({ where: {
         number: data.from,
     }});
