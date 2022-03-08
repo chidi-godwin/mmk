@@ -24,7 +24,8 @@ export async function inboundService(data: Sms, user: Account): Promise<ServiceR
     }
 
     if (data.text.trim() === "STOP") {
-        client.set(`${data.from}-${data.from}`, JSON.stringify({ from: data.from, to: data.to }), 'EX', 14400)
+        client.set(`${data.from}-${data.to}`, JSON.stringify({ from: data.from, to: data.to }), 'EX', 14400)
     }
+
     return { message: "inbound sms ok", error: ""}
 }

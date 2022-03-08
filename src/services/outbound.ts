@@ -14,7 +14,7 @@ export async function outboundService(data: Sms, user: Account): Promise<Service
         number: data.from,
     }});
 
-    const value = await client.get(`${data.from}-${data.to}`);
+    const value = await client.get(`${data.to}-${data.from}`);
 
     if (value) {
         data = JSON.parse(value);

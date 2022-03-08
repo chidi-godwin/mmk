@@ -5,8 +5,6 @@ import RedisClient from "ioredis";
 import { env } from "process";
 
 
-const client = new RedisClient(env.REDIS_URL);
-
 export const limiter = rateLimit({
   windowMs: 24 * 60 * 60 * 1000,
   max: 50, 
