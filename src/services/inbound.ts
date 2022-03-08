@@ -1,5 +1,5 @@
 import dotenv from "dotenv"
-dotenv.config({path: "../../.env"});
+dotenv.config();
 import Account from "../models/Account";
 import PhoneNumber from "../models/PhoneNumber";
 import { ServiceResponse, Sms } from "../types/inbound";
@@ -18,8 +18,9 @@ export async function inboundService(data: Sms, user: Account): Promise<ServiceR
     const number = await PhoneNumber.findOne({ where: {
         number: data.to,
     }});
+    
 
-    if ( number.account_id !== user.id) {
+    if (!number || number.account_id !== user.id) {
         return { 
             message: "", 
             error: "to parameter not found"

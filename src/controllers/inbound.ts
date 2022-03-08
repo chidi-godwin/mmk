@@ -8,19 +8,23 @@ export default async function (req: Request, res: Response): Promise<Response<Se
     try {
         const data: Sms = await smsValidator.validateAsync(req.body);
         const response = await inboundService(data, req.user);
+        let status = 200;
 
-        return res.status(200).send(response)
+        if (response.error) status = 400;
+
+        return res.status(status).send(response)
     } catch (err: any) {
-        let message = '', status=500;
+        let error = "unknown failure", status=500;
+        console.log(err)
 
-        if (err.errors) {
-            message = err.errors[Object.keys(err.errors)[0]].properties.message;
+        if (err.name === "ValidationError") {
+            error = err.details[0].message;
             status = 400;
         }
         
         return res.status(status).send({
-            message,
-            error: "unknown failure"
+            message: "",
+            error
         })
     }
 }
