@@ -11,6 +11,7 @@ export default async function (req: Request, res: Response): Promise<Response<Se
 
         return res.status(200).send(response)
     } catch (err: any) {
+        console.log(err)
         let message = '', status=500;
 
         if (err.errors) {

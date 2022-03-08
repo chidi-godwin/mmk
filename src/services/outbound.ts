@@ -29,7 +29,7 @@ export async function outboundService(data: Sms, user: Account): Promise<Service
         }
     }
 
-    if ( number.account_id !== user.id) {
+    if (!number || number.account_id !== user.id) {
         return { 
             message: "", 
             error: "from parameter not found"
