@@ -7,7 +7,7 @@ import { env } from "process";
 
 
 const client = createClient({
-  url: env.REDIS_URL
+  url: env.REDIS_TLS_URL
 });
 client.connect().then(() => console.log('Redis client connected'));
 

@@ -9,7 +9,7 @@ import { env } from "process";
 
 export async function inboundService(data: Sms, user: Account): Promise<ServiceResponse> {
     const client = createClient({
-        url: env.REDIS_URL
+        url: env.REDIS_TLS_URL
     });
 
     client.on('error', (err) => console.log('Redis Client Error', err));
