@@ -8,6 +8,7 @@ import { env } from "process";
 
 
 export async function outboundService(data: Sms, user: Account): Promise<ServiceResponse> {
+    console.log(env.REDIS_URL);
     const client = createClient({
         url: env.REDIS_URL
     });
